@@ -23,7 +23,28 @@ app.get('/countries' , (req,res) =>{
 app.get('/filter',(req,res) => {
     const filter = countries.filter((item)=>item.hasMoney == "true")
     res.send(filter);
-})
+});
+
+app.get('/countries' , (req,res) =>{
+
+    // console.log(countries);
+    res.send(countries);
+});
+
+// displaying just the names 
+app.get('/name' , (req,res) =>{
+
+ console.log('country name')
+    const foundData = countries.map((item)=>item.name)
+    res.send(foundData);
+});
+
+// the reverse of the array list
+app.get('/countriesR' , (req,res) =>{
+    // console.log(countries);
+    res.send(countries.reverse());
+});
+
 
 app.get('/countries/:id' , (req,res) =>{
     const id =req.params.id
@@ -33,6 +54,7 @@ app.get('/countries/:id' , (req,res) =>{
     const foundData =countries.find((item)=>item.id == id)
     res.send(foundData);
 });
+
 
 
 //the app will listen on a port. should be the last in the file
